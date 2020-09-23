@@ -22,6 +22,8 @@ namespace UserMaintenance
             label1.Text = Resource1.FullName;
             button1.Text = Resource1.Add;
             button2.Text = Resource1.Fájlba_írás;
+            button3.Text = Resource1.Törlés;
+            
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -58,6 +60,13 @@ namespace UserMaintenance
 
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            User torlendo = new User();
+            torlendo = (User)listBox1.SelectedItem;
+            users.Remove(torlendo);
         }
     }
 }
