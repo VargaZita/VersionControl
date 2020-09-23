@@ -49,7 +49,7 @@ namespace UserMaintenance
 
             if (sfd.ShowDialog() != DialogResult.OK) return;
 
-            using (StreamWriter sw = new StreamWriter(sfd.FileName, true, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
             {
                 foreach (var u in users)
                 {
