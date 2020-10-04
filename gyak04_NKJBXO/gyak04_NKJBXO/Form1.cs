@@ -132,6 +132,7 @@ namespace gyak04_NKJBXO
 
             Excel.Range utolsooszlopRange = xlSheet.get_Range(GetCell(2, headers.Length), GetCell(Flats.Count + 1, headers.Length));
             utolsooszlopRange.Interior.Color = Color.LightGreen;
+            utolsooszlopRange.NumberFormat = "# ###.00";
 
 
 
