@@ -1,4 +1,5 @@
-﻿using gyak06_NKJBXO.MnbServiceReference;
+﻿using gyak06_NKJBXO.Entities;
+using gyak06_NKJBXO.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,10 @@ namespace gyak06_NKJBXO
             InitializeComponent();
 
             WebSzolgaltatas();
+
+            BindingList<RateData> Rates = new BindingList<RateData>();
+
+            dataGridView1.DataSource = Rates;
         }
 
         private void WebSzolgaltatas()
