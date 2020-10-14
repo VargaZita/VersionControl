@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gyak06_NKJBXO.MnbServiceReference;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,26 @@ namespace gyak06_NKJBXO
         public Form1()
         {
             InitializeComponent();
+
+            WebSzolgaltatas();
+        }
+
+        private void WebSzolgaltatas()
+        {
+            //throw new NotImplementedException();
+
+            var mnbService = new MNBArfolyamServiceSoapClient();
+
+            var request = new GetExchangeRatesRequestBody()
+            {
+                currencyNames = "EUR",
+                startDate = "2020-01-01",
+                endDate = "2020-06-30"
+            };
+
+            var response = mnbService.GetExchangeRates(request);
+
+            var result = response.GetExchangeRatesResult;
         }
     }
 }
