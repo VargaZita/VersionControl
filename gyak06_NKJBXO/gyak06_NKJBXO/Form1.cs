@@ -18,12 +18,20 @@ namespace gyak06_NKJBXO
     {
 
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<CurrencyData> Currencies = new BindingList<CurrencyData>();
 
         public Form1()
         {
             InitializeComponent();
 
-                       
+           
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
+
             dataGridView1.DataSource = Rates;
 
             XMLFeldolgozas(WebSzolgaltatas());
@@ -34,6 +42,7 @@ namespace gyak06_NKJBXO
         private void DiagramMegjelenites()
         {
             chartRateData.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
 
             var series = chartRateData.Series[0];
             series.ChartType = SeriesChartType.Line;
@@ -84,8 +93,8 @@ namespace gyak06_NKJBXO
             var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString()
             };
 
             var response = mnbService.GetExchangeRates(request);
@@ -94,6 +103,21 @@ namespace gyak06_NKJBXO
 
 
             return result;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
