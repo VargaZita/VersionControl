@@ -18,13 +18,30 @@ namespace gyak06_NKJBXO
     {
 
         BindingList<RateData> Rates = new BindingList<RateData>();
-        BindingList<CurrencyData> Currencies = new BindingList<CurrencyData>();
+        BindingList<string> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
 
-           
+            var mnbService = new MNBArfolyamServiceSoapClient();
+
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+            richTextBox1.Text = result;
+            foreach (XmlElement element in xml.DocumentElement.FirstChild)
+            {
+
+                var childElement = element.ChildNodes[0];
+                //if (childElement == null)
+                //    continue;
+                Currencies.Add(childElement.ToString());
+            }
+
             RefreshData();
         }
 
@@ -64,6 +81,7 @@ namespace gyak06_NKJBXO
 
             var xml = new XmlDocument();
             xml.LoadXml(result);
+            richTextBox2.Text = result;
 
             foreach (XmlElement element in xml.DocumentElement)
             {
@@ -73,6 +91,8 @@ namespace gyak06_NKJBXO
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
