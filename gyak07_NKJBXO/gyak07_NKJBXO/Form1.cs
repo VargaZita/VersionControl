@@ -25,15 +25,19 @@ namespace gyak07_NKJBXO
         {
             InitializeComponent();
 
-            Population=GetPopulation(@"C:\Temp\nép.csv");
-            BirthProbabilities=GetBirtProbabilities(@"C:\Temp\születés.csv");
-            DeathProbabilities=GetDeathProbabilities(@"C:\Temp\halál.csv");
+            Population = GetPopulation(@"C:\Temp\nép.csv");
+            BirthProbabilities = GetBirtProbabilities(@"C:\Temp\születés.csv");
+            DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
 
+        }
+
+        private void Simulation()
+        {
             for (int year = 2005; year <= 2024; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    SimStep(year,Population[i]);
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -139,6 +143,12 @@ namespace gyak07_NKJBXO
             }
 
             return population;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Simulation();
+
         }
     }
 }
