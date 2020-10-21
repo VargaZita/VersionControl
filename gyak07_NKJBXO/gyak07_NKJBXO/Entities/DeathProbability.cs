@@ -10,6 +10,6 @@ namespace gyak07_NKJBXO.Entities
     {
         public Gender Gender { get; set; }
         public int Age { get; set; }
-        public double DProbability { get; set; }
+        public double P { get; set; }
     }
 }

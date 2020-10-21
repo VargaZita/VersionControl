@@ -33,6 +33,7 @@ namespace gyak07_NKJBXO
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
+                    SimStep(year,Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -43,6 +44,36 @@ namespace gyak07_NKJBXO
                                     select x).Count();
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+            }
+        }
+
+        private void SimStep(int year, Person person)
+        {
+            if (!person.IsAlive) return;
+            byte age = (byte)(year - person.BirthYear);
+
+            double pDeath = (from x in DeathProbabilities
+                             where x.Gender == person.Gender && x.Age == age
+                             select x.P).FirstOrDefault();
+
+            if (rnd.NextDouble() <= pDeath)
+                person.IsAlive = false;
+
+            if (person.IsAlive && person.Gender == Gender.Female)
+            {
+                double pBirth = (from x in BirthProbabilities
+                                 where x.Age == age
+                                 select x.P).FirstOrDefault();
+
+                if (rnd.NextDouble() <= pBirth)
+                {
+                    Person újszülött = new Person();
+                    újszülött.BirthYear = year;
+                    újszülött.NbrOfChildren = 0;
+                    újszülött.Gender = (Gender)(rnd.Next(1, 3));
+                    Population.Add(újszülött);
+
+                }
             }
         }
 
@@ -59,7 +90,7 @@ namespace gyak07_NKJBXO
                     {
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[0]),
                         Age = int.Parse(line[1]),
-                        DProbability = double.Parse(line[2])
+                        P = double.Parse(line[2])
                     });
                 }
             }
@@ -81,7 +112,7 @@ namespace gyak07_NKJBXO
                         {
                             Age = int.Parse(line[0]),
                             NbrOfChildren = int.Parse(line[1]),
-                            BProbability = double.Parse(line[2])
+                            P = double.Parse(line[2])
                         });
                     }
                 }
