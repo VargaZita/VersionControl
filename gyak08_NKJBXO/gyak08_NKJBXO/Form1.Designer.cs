@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnBallColor = new System.Windows.Forms.Button();
+            this.lblNext = new System.Windows.Forms.Label();
+            this.btnSelectBall = new System.Windows.Forms.Button();
+            this.btnSelectCar = new System.Windows.Forms.Button();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnSelectCar = new System.Windows.Forms.Button();
-            this.btnSelectBall = new System.Windows.Forms.Button();
-            this.lblNext = new System.Windows.Forms.Label();
-            this.btnColor = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +44,7 @@
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.Controls.Add(this.btnColor);
+            this.mainPanel.Controls.Add(this.btnBallColor);
             this.mainPanel.Controls.Add(this.lblNext);
             this.mainPanel.Controls.Add(this.btnSelectBall);
             this.mainPanel.Controls.Add(this.btnSelectCar);
@@ -53,28 +53,25 @@
             this.mainPanel.Size = new System.Drawing.Size(798, 450);
             this.mainPanel.TabIndex = 0;
             // 
-            // createTimer
+            // btnBallColor
             // 
-            this.createTimer.Enabled = true;
-            this.createTimer.Interval = 3000;
-            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
+            this.btnBallColor.BackColor = System.Drawing.Color.Blue;
+            this.btnBallColor.Location = new System.Drawing.Point(105, 66);
+            this.btnBallColor.Name = "btnBallColor";
+            this.btnBallColor.Size = new System.Drawing.Size(88, 23);
+            this.btnBallColor.TabIndex = 2;
+            this.btnBallColor.UseVisualStyleBackColor = false;
+            this.btnBallColor.Click += new System.EventHandler(this.btnBallColor_Click);
             // 
-            // conveyorTimer
+            // lblNext
             // 
-            this.conveyorTimer.Enabled = true;
-            this.conveyorTimer.Interval = 10;
-            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
-            // 
-            // btnSelectCar
-            // 
-            this.btnSelectCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSelectCar.Location = new System.Drawing.Point(11, 11);
-            this.btnSelectCar.Name = "btnSelectCar";
-            this.btnSelectCar.Size = new System.Drawing.Size(88, 48);
-            this.btnSelectCar.TabIndex = 0;
-            this.btnSelectCar.Text = "CAR";
-            this.btnSelectCar.UseVisualStyleBackColor = true;
-            this.btnSelectCar.Click += new System.EventHandler(this.btnSelectCar_Click);
+            this.lblNext.AutoSize = true;
+            this.lblNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblNext.Location = new System.Drawing.Point(341, 12);
+            this.lblNext.Name = "lblNext";
+            this.lblNext.Size = new System.Drawing.Size(89, 17);
+            this.lblNext.TabIndex = 1;
+            this.lblNext.Text = "Coming next:";
             // 
             // btnSelectBall
             // 
@@ -87,25 +84,28 @@
             this.btnSelectBall.UseVisualStyleBackColor = true;
             this.btnSelectBall.Click += new System.EventHandler(this.btnSelectBall_Click);
             // 
-            // lblNext
+            // btnSelectCar
             // 
-            this.lblNext.AutoSize = true;
-            this.lblNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblNext.Location = new System.Drawing.Point(341, 12);
-            this.lblNext.Name = "lblNext";
-            this.lblNext.Size = new System.Drawing.Size(89, 17);
-            this.lblNext.TabIndex = 1;
-            this.lblNext.Text = "Coming next:";
+            this.btnSelectCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSelectCar.Location = new System.Drawing.Point(11, 11);
+            this.btnSelectCar.Name = "btnSelectCar";
+            this.btnSelectCar.Size = new System.Drawing.Size(88, 48);
+            this.btnSelectCar.TabIndex = 0;
+            this.btnSelectCar.Text = "CAR";
+            this.btnSelectCar.UseVisualStyleBackColor = true;
+            this.btnSelectCar.Click += new System.EventHandler(this.btnSelectCar_Click);
             // 
-            // btnColor
+            // createTimer
             // 
-            this.btnColor.BackColor = System.Drawing.Color.Blue;
-            this.btnColor.Location = new System.Drawing.Point(105, 66);
-            this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(88, 23);
-            this.btnColor.TabIndex = 2;
-            this.btnColor.UseVisualStyleBackColor = false;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            this.createTimer.Enabled = true;
+            this.createTimer.Interval = 3000;
+            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
+            // 
+            // conveyorTimer
+            // 
+            this.conveyorTimer.Enabled = true;
+            this.conveyorTimer.Interval = 10;
+            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
             // 
             // Form1
             // 
@@ -129,7 +129,7 @@
         private System.Windows.Forms.Label lblNext;
         private System.Windows.Forms.Button btnSelectBall;
         private System.Windows.Forms.Button btnSelectCar;
-        private System.Windows.Forms.Button btnColor;
+        private System.Windows.Forms.Button btnBallColor;
     }
 }
 
