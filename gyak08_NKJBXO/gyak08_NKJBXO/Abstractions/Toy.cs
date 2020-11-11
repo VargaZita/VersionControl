@@ -16,6 +16,8 @@ namespace gyak08_NKJBXO.Abstractions
             Width = 50;
             Height = Width;
             Paint += Toy_Paint;
+            Top = 200;
+            
         }
 
         private void Toy_Paint(object sender, PaintEventArgs e)

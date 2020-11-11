@@ -99,5 +99,14 @@ namespace gyak08_NKJBXO
                 button.BackColor = colorPicker.Color;
             }
         }
+
+        private void btnSelectPresent_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory()
+            {
+                BoxColor = btnBoxColor.BackColor,
+                RibbonColor = btnRibbonColor.BackColor
+            };
+        }
     }
 }
