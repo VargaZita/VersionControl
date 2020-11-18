@@ -108,5 +108,6 @@ namespace gyak08_NKJBXO
                 RibbonColor = btnRibbonColor.BackColor
             };
         }
+
     }
 }
