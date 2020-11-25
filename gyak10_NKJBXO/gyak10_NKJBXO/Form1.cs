@@ -31,10 +31,9 @@ namespace gyak10_NKJBXO
             for (int i = 0; i < populationSize; i++)
             {
                 gc.AddPlayer(nbrOfSteps);
-                gc.Start();
-
             }
-            
+            gc.Start();
+
 
             //gc.AddPlayer();
             //gc.Start(true);
